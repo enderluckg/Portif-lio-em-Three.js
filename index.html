@@ -10,7 +10,11 @@
 
 <body>
 
-  
+  <svg id="setavoltar" class="displaynone" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="6" height="6" viewBox="0 0 17 17">
+<g>
+</g>
+	<path d="M16 8.972h-12.793l6.146 6.146-0.707 0.707-7.353-7.353 7.354-7.354 0.707 0.707-6.147 6.147h12.793v1z" fill="#fffff" />
+</svg>
   <div id="sobremim" class="displaynone">
     <div id="titulosobremim">
       <h2>Sobre Mim</h2>
@@ -25,6 +29,7 @@
       <div id="divimg"></div>
     </div>
   </div>
+   <div class="seguidora"></div>
   
 
 
@@ -48,8 +53,9 @@
 
     let contadorSun = 0;
     let contadorMercurio = 0;
+    const divsobremim = document.getElementById('sobremim');
 
-    // ...adicione antes da função animate...
+
     let cameraTarget = null;
     let cameraStart = null;
     let cameraProgress = 0;
@@ -62,7 +68,10 @@
       cameraProgress = 0;
     }
 
-
+   // === Carregar textura da imagem ===
+    const loader = new THREE.TextureLoader();
+    const texturaSol = loader.load("texturaplanetas/2k_sun.jpg");
+    const texturaTerra = loader.load("texturaplanetas/2k_earth_daymap.jpg"); // coloque o nome do arquivo aqui
 
 
 
@@ -85,7 +94,12 @@
 
     // Criando o Sol
     const sunGeometry = new THREE.SphereGeometry(8, 32, 32);
-    const sunMaterial = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+    const sunMaterial = new THREE.MeshStandardMaterial({
+      emissiveMap: texturaSol, // A textura que vai brilhar
+      emissive: 0xffffff,      // A cor do brilho (branco, para não alterar a cor da textura)
+      emissiveIntensity : 1.5, // A intensidade do brilho
+      color: 0x000000          // Cor base preta para não refletir a PointLight
+    });
     const sun = new THREE.Mesh(sunGeometry, sunMaterial);
     scene.add(sun);
 
@@ -201,7 +215,7 @@
     let cameraLookTarget = scene.position.clone(); // alvo padrão
 
 
-    let animacaoAtiva = true;
+    let animacaoMercurio = true;
     // Animação
     function animate() {
       requestAnimationFrame(animate);
@@ -213,7 +227,7 @@
 
       // Rotacionar Mercurio em torno do próprio eixo
       mercurio.rotation.y += 0.02;
-if(animacaoAtiva == true){
+if(animacaoMercurio == true){
       // Mercurio orbita o Sol 
       orbitaMercurio.rotation.y += 0.004;
    }
@@ -281,6 +295,31 @@ if(animacaoAtiva == true){
 
     animate();
 
+
+    //função para sol quando clicar pela 2 vez
+     function solclicado2()
+    {
+            gsap.to(sun.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
+            gsap.to(sun.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
+            gsap.to(OrbitaTerra.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
+            gsap.to(OrbitaTerra.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaVenus.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaVenus.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaMercurio.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaMercurio.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaMarte.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaMarte.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaJupiter.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaJupiter.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaSaturno.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaSaturno.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaUrano.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaUrano.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaNetuno.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaNetuno.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
+            divsobremim.classList.remove('displaynone');
+    }
+
     function criarEstrelas() {
       const estrela = document.createElement('div');
       estrela.classList.add('estrela');
@@ -304,11 +343,11 @@ if(animacaoAtiva == true){
       criarEstrelas();
     }
 
- const planetas = [sun, terra, mercurio, Venus, marte, jupiter, saturno, urano, netuno];
+    const planetas = [sun, terra, mercurio, Venus, marte, jupiter, saturno, urano, netuno];
     const raycaster = new THREE.Raycaster();
 
     
-   window.addEventListener('mousemove', (event) => {
+  window.addEventListener('mousemove', (event) => {
   const mouse = new THREE.Vector2();
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -316,10 +355,10 @@ if(animacaoAtiva == true){
   raycaster.setFromCamera(mouse, camera);
   const intersects = raycaster.intersectObjects(planetas);
 
-  planetas.forEach(p => p.material.emissive.set(0x000000)); // volta ao normal
+   
 
   if (intersects.length > 0) {
-    intersects[0].object.material.emissive.set(0x3333ff); // destaca planeta
+      
   }
 });
 
@@ -344,53 +383,56 @@ if(animacaoAtiva == true){
 
       if (intersects.length > 0) {
         const planetaClicado = intersects[0].object;
-        if (planetaClicado === sun) {
+        if (planetaClicado === sun && contadorSun <2) {
           moveCameraTo(new THREE.Vector3(10, 10, 10));
+          cameraLookTarget = sun.position.clone();
           const estrelas = document.querySelectorAll('.estrela');
           estrelas.forEach(e => e.style.display = 'none');
           contadorSun++;
           console.log(contadorSun);
-          if (planetaClicado === sun && contadorSun == 2) {
-            gsap.to(sun.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
-            gsap.to(sun.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
-            gsap.to(OrbitaTerra.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
-            gsap.to(OrbitaTerra.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaVenus.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaVenus.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaMercurio.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaMercurio.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaMarte.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaMarte.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaJupiter.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaJupiter.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaSaturno.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaSaturno.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaUrano.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaUrano.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaNetuno.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaNetuno.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
+           setavoltar.classList.remove('displaynone');
 
-            const divsobremim = document.getElementById('sobremim');
-            divsobremim.classList.remove('displaynone');
+           
+          if (planetaClicado === sun && contadorSun == 2) {
+            solclicado2();
           }
 
         }
          if (planetaClicado === terra) {
           window.location.href = "https://pt.wikipedia.org/wiki/Terra";
         }
-         if (planetaClicado === mercurio) {
+         if (planetaClicado === mercurio && contadorMercurio <2) {
+          
           const estrelas = document.querySelectorAll('.estrela');
           estrelas.forEach(e => e.style.display = 'none');
           const posicaoMercurio = new THREE.Vector3();
           mercurio.getWorldPosition(posicaoMercurio);
           moveCameraTo(new THREE.Vector3(posicaoMercurio.x,posicaoMercurio.y , posicaoMercurio.z + 2));
-           cameraLookTarget = posicaoMercurio.clone();
-          animacaoAtiva = false;
+          cameraLookTarget = posicaoMercurio.clone();
+          animacaoMercurio = false;
           contadorMercurio++;
           console.log(contadorMercurio);
+          divsobremim.classList.add('displaynone');
           if (planetaClicado === mercurio && contadorMercurio == 2) {
-          gsap.to(mercurio.position, { x: posicaoMercurio.x - 1, duration: 1, ease: "power2.out" });
-          gsap.to(mercurio.position, { z: posicaoMercurio.z + 1, duration: 1, ease: "power2.out" });
+            
+            // --- Primeiro movimento: deslocamento em Z ---
+            // 1. Calcular a posição de mundo alvo após o deslocamento em Z
+            const targetWorldPosAfterZ = posicaoMercurio.clone();
+            targetWorldPosAfterZ.z += 0;
+
+            // 2. Converter esta posição de mundo alvo para coordenadas locais em relação a 'orbitaMercurio'
+            orbitaMercurio.worldToLocal(targetWorldPosAfterZ);
+
+            // 3. Definir a posição local de Mercúrio para estas coordenadas locais calculadas
+            mercurio.position.copy(targetWorldPosAfterZ);
+
+            // --- Segundo movimento: animação GSAP para deslocamento em X ---
+            // 1. Calcular a posição de mundo alvo para a animação GSAP (deslocamento de -1 no X do mundo)
+            const targetWorldPosForGSAP = posicaoMercurio.clone(); // Usar a posição inicial do segundo clique
+            targetWorldPosForGSAP.x -= 1; // Mover -1 no X do mundo
+            orbitaMercurio.worldToLocal(targetWorldPosForGSAP); // Converter para local
+            gsap.to(mercurio.position, { x: targetWorldPosForGSAP.x, y: targetWorldPosForGSAP.y, z: targetWorldPosForGSAP.z, duration: 1, ease: "power2.out" });
+          
           }
          
           
@@ -427,7 +469,7 @@ if(animacaoAtiva == true){
       renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
-
+    
 
 
 

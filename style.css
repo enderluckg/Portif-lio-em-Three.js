@@ -79,3 +79,24 @@
    margin-left: 10px;
    margin-right: 10px;
 }
+
+#setavoltar
+{
+   position: absolute;
+   top: 10%;
+   left: 5%;
+   width: 20px;
+   height: 20px;
+   fill: white;
+   cursor: pointer;
+   z-index: 1;
+}
+ .seguidora {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: red;
+      border-radius: 50%;
+      pointer-events: none; /* não atrapalha cliques */
+      transition: transform 0.05s linear; /* movimento suave */
+    }
