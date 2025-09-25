@@ -10,13 +10,14 @@
 
 <body>
 
-  <svg id="setavoltar" class="displaynone" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="6" height="6" viewBox="0 0 17 17">
+  
+  <svg id="setavoltar" onclick="voltar()" class="displaynone" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="6" height="6" viewBox="0 0 17 17">
 <g>
 </g>
 	<path d="M16 8.972h-12.793l6.146 6.146-0.707 0.707-7.353-7.353 7.354-7.354 0.707 0.707-6.147 6.147h12.793v1z" fill="#fffff" />
 </svg>
   <div id="sobremim" class="displaynone">
-    <div id="titulosobremim">
+    <div id="titulosobremim" onclick>
       <h2>Sobre Mim</h2>
     </div>
     <div id="orgsobremim">
@@ -53,7 +54,9 @@
 
     let contadorSun = 0;
     let contadorMercurio = 0;
+    
     let contadorVenus = 0;
+    let contadorNetuno = 0;
     const divsobremim = document.getElementById('sobremim');
 
 
@@ -68,6 +71,9 @@
       cameraTarget = targetPosition.clone();
       cameraProgress = 0;
     }
+
+
+
 
    // === Carregar textura da imagem ===
     const loader = new THREE.TextureLoader();
@@ -125,6 +131,9 @@
     scene.add(orbitaMercurio);
     mercurio.position.set(12, 0, 0);
     orbitaMercurio.add(mercurio);
+    mercurio.userData = { nome: "Mercurio", animacao: true ,clicks:0};
+
+
 
     // criando Venus
     const VenusGeometry = new THREE.SphereGeometry(1, 32, 32);
@@ -136,6 +145,8 @@
     scene.add(orbitaVenus);
     Venus.position.set(15, 0, 0);
     orbitaVenus.add(Venus);
+    Venus.userData = { nome: "Venus", animacao: true ,clicks:0};
+
 
 
     // Criando a Terra
@@ -148,6 +159,10 @@
     scene.add(OrbitaTerra);
     terra.position.set(18, 0, 0);
     OrbitaTerra.add(terra);
+    terra.userData = { nome: "Terra", animacao: true ,clicks:0};
+
+
+
 
 
     // Marte
@@ -160,6 +175,9 @@
     scene.add(orbitaMarte);
     marte.position.set(23, 0, 0);
     orbitaMarte.add(marte);
+    marte.userData = { nome: "Marte", animacao: true ,clicks:0};
+
+
 
     // Júpiter
     const JupiterGeometry = new THREE.SphereGeometry(3, 32, 32);
@@ -171,6 +189,8 @@
     scene.add(orbitaJupiter);
     jupiter.position.set(28, 0, 0);
     orbitaJupiter.add(jupiter);
+    jupiter.userData = { nome: "Júpiter", animacao: true ,clicks:0};
+
 
     // Saturno
     const SaturnoGeometry = new THREE.SphereGeometry(1.7, 32, 32);
@@ -182,6 +202,8 @@
     scene.add(orbitaSaturno);
     saturno.position.set(34, 0, 0);
     orbitaSaturno.add(saturno);
+    saturno.userData = { nome: "Saturno", animacao: true ,clicks:0};
+
 
     // Urano
     const UranoGeometry = new THREE.SphereGeometry(1.2, 32, 32);
@@ -193,6 +215,7 @@
     scene.add(orbitaUrano);
     urano.position.set(39, 0, 0);
     orbitaUrano.add(urano);
+    urano.userData = { nome: "Urano", animacao: true ,clicks:0};
 
     // Netuno
     const NetunoGeometry = new THREE.SphereGeometry(1.1, 32, 32);
@@ -204,6 +227,7 @@
     scene.add(orbitaNetuno);
     netuno.position.set(43, 0, 0);
     orbitaNetuno.add(netuno);
+    netuno.userData = { nome: "Netuno", animacao: true ,clicks:0};
 
 
 
@@ -228,6 +252,13 @@
 
     let animacaoMercurio = true;
     let animacaoVenus = true;
+    let animacaoMarte = true;
+    let animacaoJupiter = true;
+    let animacaoSaturno = true;
+    let animacaoUrano = true; 
+    let animacaoNetuno = true;
+    
+
     // Animação
     function animate() {
       requestAnimationFrame(animate);
@@ -239,52 +270,52 @@
 
       // Rotacionar Mercurio em torno do próprio eixo
       mercurio.rotation.y += 0.02;
-if(animacaoMercurio == true){
+if(mercurio.userData.animacao == true){
       // Mercurio orbita o Sol 
       orbitaMercurio.rotation.y += 0.004;
    }
       // Rotacionar Venus em torno do próprio eixo
       Venus.rotation.y += 0.0018;
-if(animacaoVenus == true){
+    if(Venus.userData.animacao == true){
       // Venus orbita o Sol 
       orbitaVenus.rotation.y += 0.003;
-}
+     }
       // A Terra orbita o Sol
       OrbitaTerra.rotation.y += 0.0047;
-
+if(terra.userData.animacao == true){
       // A Terra gira em torno do próprio eixo
       terra.rotation.y += 0.004;
-
+}
       // Rotacionar Marte em torno do próprio eixo
       marte.rotation.y += 0.05;
-
+if(marte.userData.animacao == true){
       // Marte orbita o Sol 
       orbitaMarte.rotation.y += 0.0042;
-
+}
       // Rotacionar Júpiter em torno do próprio eixo
       jupiter.rotation.y += 0.03;
-
+if(jupiter.userData.animacao == true){
       // Júpiter orbita o Sol
       orbitaJupiter.rotation.y += 0.002;
-
+}
       // Rotacionar Saturno em torno do próprio eixo
       saturno.rotation.y += 0.025;
-
+if(saturno.userData.animacao == true){
       // Saturno orbita o Sol
       orbitaSaturno.rotation.y += 0.0015;
-
+}
       // Rotacionar Urano em torno do próprio eixo
       urano.rotation.y += 0.02;
-
+if(urano.userData.animacao == true){
       // Urano orbita o Sol
       orbitaUrano.rotation.y += 0.001;
-
+}
       // Rotacionar Netuno em torno do próprio eixo
       netuno.rotation.y += 0.015;
-
+if(netuno.userData.animacao == true){
       // Netuno orbita o Sol
       orbitaNetuno.rotation.y += 0.0008;
-
+}
       // A Lua orbita a Terra
       moonOrbit.rotation.y += 0.03;
 
@@ -397,20 +428,19 @@ if(animacaoVenus == true){
       if (intersects.length > 0) {
         const planetaClicado = intersects[0].object;
 
-        function planetaClicado1(planeta,posicaoabsolutaplaneta,contadorplaneta,animacaoplaneta){
+        function planetaClicado1(planeta,posicaoabsolutaplaneta){
 
-if (planetaClicado === planeta && contadorplaneta <2) {
+if (planetaClicado === planeta && planeta.userData.clicks < 2) {
     
     const estrelas = document.querySelectorAll('.estrela');
     estrelas.forEach(e => e.style.display = 'none');
-    const posicaoMercurio = new THREE.Vector3();
-    mercurio.getWorldPosition(posicaoMercurio);
-    moveCameraTo(new THREE.Vector3(posicaoMercurio.x,posicaoMercurio.y , posicaoMercurio.z + 2));
-    cameraLookTarget = posicaoMercurio.clone();
-    animacaoplaneta = false;
-    contadorMercurio++;
-    console.log(contadorMercurio);
+    const posicaoabsolutaplaneta = new THREE.Vector3();
+    planeta.getWorldPosition(posicaoabsolutaplaneta);
+    moveCameraTo(new THREE.Vector3(posicaoabsolutaplaneta.x,posicaoabsolutaplaneta.y , posicaoabsolutaplaneta.z + 2));
+    cameraLookTarget = posicaoabsolutaplaneta.clone();
+    planeta.userData.animacao = false;
     divsobremim.classList.add('displaynone');
+  
     if (planetaClicado === mercurio && contadorMercurio == 2) {
       
       // --- Primeiro movimento: deslocamento em Z ---
@@ -456,20 +486,13 @@ if (planetaClicado === planeta && contadorplaneta <2) {
 
         }
          if (planetaClicado === terra) {
-          window.location.href = "https://pt.wikipedia.org/wiki/Terra";
+          planetaClicado1(terra,OrbitaTerra.position);
         }
-         if (planetaClicado === mercurio && contadorMercurio <2) {
+         if (planetaClicado === mercurio ) {
           
-          const estrelas = document.querySelectorAll('.estrela');
-          estrelas.forEach(e => e.style.display = 'none');
-          const posicaoMercurio = new THREE.Vector3();
-          mercurio.getWorldPosition(posicaoMercurio);
-          moveCameraTo(new THREE.Vector3(posicaoMercurio.x,posicaoMercurio.y , posicaoMercurio.z + 2));
-          cameraLookTarget = posicaoMercurio.clone();
-          animacaoMercurio = false;
-          contadorMercurio++;
-          console.log(contadorMercurio);
-          divsobremim.classList.add('displaynone');
+          planetaClicado1(mercurio,orbitaMercurio.position);
+          
+         
           if (planetaClicado === mercurio && contadorMercurio == 2) {
             
             // --- Primeiro movimento: deslocamento em Z ---
@@ -496,22 +519,22 @@ if (planetaClicado === planeta && contadorplaneta <2) {
          
         }
         else if (planetaClicado === Venus) {
-          planetaClicado1(Venus,orbitaVenus.position,contadorVenus,animacaoVenus)
+          planetaClicado1(Venus,orbitaVenus.position,)
         }
         else if (planetaClicado === marte) {
-          window.location.href = "https://pt.wikipedia.org/wiki/Marte_(planeta)";
+        planetaClicado1(marte,orbitaMarte.position);
         }
         else if (planetaClicado === jupiter) {
-          window.location.href = "https://pt.wikipedia.org/wiki/J%C3%BApiter_(planeta)";
+          planetaClicado1(jupiter,orbitaJupiter.position);
         }
         else if (planetaClicado === saturno) {
-          window.location.href = "https://pt.wikipedia.org/wiki/Saturno_(planeta)";
+          planetaClicado1(saturno,orbitaSaturno.position);
         }
         else if (planetaClicado === urano) {
-          window.location.href = "https://pt.wikipedia.org/wiki/Urano_(planeta)";
+          planetaClicado1(urano,orbitaUrano.position);
         }
         else if (planetaClicado === netuno) {
-          window.location.href = "https://pt.wikipedia.org/wiki/Netuno_(planeta)";
+          planetaClicado1(netuno,orbitaNetuno.position);
         }
 
       }
