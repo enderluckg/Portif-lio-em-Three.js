@@ -92,7 +92,7 @@
    cursor: pointer;
    z-index: 1;
 }
- .seguidora {
+ #seguidora {
       position: absolute;
       width: 40px;
       height: 40px;

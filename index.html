@@ -29,7 +29,7 @@
       <div id="divimg"></div>
     </div>
   </div>
-   <div class="seguidora"></div>
+   <div id="seguidora"></div>
   
 
 
@@ -53,6 +53,7 @@
 
     let contadorSun = 0;
     let contadorMercurio = 0;
+    let contadorVenus = 0;
     const divsobremim = document.getElementById('sobremim');
 
 
@@ -71,7 +72,17 @@
    // === Carregar textura da imagem ===
     const loader = new THREE.TextureLoader();
     const texturaSol = loader.load("texturaplanetas/2k_sun.jpg");
+    const texturaMercurio = loader.load("texturaplanetas/2k_mercury.jpg");
+    const texturaVenus = loader.load("texturaplanetas/2k_venus_surface.jpg");
     const texturaTerra = loader.load("texturaplanetas/2k_earth_daymap.jpg"); // coloque o nome do arquivo aqui
+    const texturaMarte = loader.load("texturaplanetas/2k_mars.jpg");
+    const texturaJupiter = loader.load("texturaplanetas/2k_jupiter.jpg");
+    const texturaSaturno = loader.load("texturaplanetas/2k_saturn.jpg");
+    const texturaUrano = loader.load("texturaplanetas/2k_uranus.jpg");
+    const texturaNetuno = loader.load("texturaplanetas/2k_neptune.jpg"); 
+
+    
+    
 
 
 
@@ -106,7 +117,7 @@
 
     // criando mercurio
     const MercurioGeometry = new THREE.SphereGeometry(1, 32, 32);
-    const mercurioMaterial = new THREE.MeshStandardMaterial({ color: 0x0000ff });
+    const mercurioMaterial = new THREE.MeshStandardMaterial({ map:texturaMercurio });
     const mercurio = new THREE.Mesh(MercurioGeometry, mercurioMaterial);
 
     // Grupo para a Mercurio orbitar o Sol
@@ -117,7 +128,7 @@
 
     // criando Venus
     const VenusGeometry = new THREE.SphereGeometry(1, 32, 32);
-    const VenusMaterial = new THREE.MeshStandardMaterial({ color: 0x0000ff });
+    const VenusMaterial = new THREE.MeshStandardMaterial({ map:texturaVenus });
     const Venus = new THREE.Mesh(VenusGeometry, VenusMaterial);
 
     // Grupo para a Mercurio orbitar o Sol
@@ -129,7 +140,7 @@
 
     // Criando a Terra
     const terraGeometry = new THREE.SphereGeometry(1, 32, 32);
-    const terraMaterial = new THREE.MeshStandardMaterial({ color: 0x0000ff });
+    const terraMaterial = new THREE.MeshStandardMaterial({ map:texturaTerra });
     const terra = new THREE.Mesh(terraGeometry, terraMaterial);
 
     // Grupo para a Terra orbitar o Sol
@@ -141,7 +152,7 @@
 
     // Marte
     const MarteGeometry = new THREE.SphereGeometry(0.7, 32, 32);
-    const marteMaterial = new THREE.MeshStandardMaterial({ color: 0xff3300 });
+    const marteMaterial = new THREE.MeshStandardMaterial({ map:texturaMarte });
     const marte = new THREE.Mesh(MarteGeometry, marteMaterial);
 
     // Grupo para a Marte orbitar o Sol
@@ -152,7 +163,7 @@
 
     // Júpiter
     const JupiterGeometry = new THREE.SphereGeometry(3, 32, 32);
-    const jupiterMaterial = new THREE.MeshStandardMaterial({ color: 0xffcc66 });
+    const jupiterMaterial = new THREE.MeshStandardMaterial({ map:texturaJupiter });
     const jupiter = new THREE.Mesh(JupiterGeometry, jupiterMaterial);
 
     // Grupo para a Júpiter orbitar o Sol
@@ -163,7 +174,7 @@
 
     // Saturno
     const SaturnoGeometry = new THREE.SphereGeometry(1.7, 32, 32);
-    const saturnoMaterial = new THREE.MeshStandardMaterial({ color: 0xffff99 });
+    const saturnoMaterial = new THREE.MeshStandardMaterial({ map:texturaSaturno });
     const saturno = new THREE.Mesh(SaturnoGeometry, saturnoMaterial);
 
     // Grupo para a Saturno orbitar o Sol
@@ -174,7 +185,7 @@
 
     // Urano
     const UranoGeometry = new THREE.SphereGeometry(1.2, 32, 32);
-    const uranoMaterial = new THREE.MeshStandardMaterial({ color: 0x66ffff });
+    const uranoMaterial = new THREE.MeshStandardMaterial({ map:texturaUrano });
     const urano = new THREE.Mesh(UranoGeometry, uranoMaterial);
 
     // Grupo para a Urano orbitar o Sol
@@ -185,7 +196,7 @@
 
     // Netuno
     const NetunoGeometry = new THREE.SphereGeometry(1.1, 32, 32);
-    const netunoMaterial = new THREE.MeshStandardMaterial({ color: 0x3333ff });
+    const netunoMaterial = new THREE.MeshStandardMaterial({ map:texturaNetuno });
     const netuno = new THREE.Mesh(NetunoGeometry, netunoMaterial);
 
     // Grupo para a Netuno orbitar o Sol
@@ -216,6 +227,7 @@
 
 
     let animacaoMercurio = true;
+    let animacaoVenus = true;
     // Animação
     function animate() {
       requestAnimationFrame(animate);
@@ -233,10 +245,10 @@ if(animacaoMercurio == true){
    }
       // Rotacionar Venus em torno do próprio eixo
       Venus.rotation.y += 0.0018;
-
+if(animacaoVenus == true){
       // Venus orbita o Sol 
       orbitaVenus.rotation.y += 0.003;
-
+}
       // A Terra orbita o Sol
       OrbitaTerra.rotation.y += 0.0047;
 
@@ -320,6 +332,8 @@ if(animacaoMercurio == true){
             divsobremim.classList.remove('displaynone');
     }
 
+    
+
     function criarEstrelas() {
       const estrela = document.createElement('div');
       estrela.classList.add('estrela');
@@ -345,7 +359,7 @@ if(animacaoMercurio == true){
 
     const planetas = [sun, terra, mercurio, Venus, marte, jupiter, saturno, urano, netuno];
     const raycaster = new THREE.Raycaster();
-
+    
     
   window.addEventListener('mousemove', (event) => {
   const mouse = new THREE.Vector2();
@@ -358,9 +372,8 @@ if(animacaoMercurio == true){
    
 
   if (intersects.length > 0) {
-      
-  }
-});
+   
+}});
 
 
 
@@ -379,10 +392,54 @@ if(animacaoMercurio == true){
      
       const intersects = raycaster.intersectObjects(planetas);
 
-  
+     
 
       if (intersects.length > 0) {
         const planetaClicado = intersects[0].object;
+
+        function planetaClicado1(planeta,posicaoabsolutaplaneta,contadorplaneta,animacaoplaneta){
+
+if (planetaClicado === planeta && contadorplaneta <2) {
+    
+    const estrelas = document.querySelectorAll('.estrela');
+    estrelas.forEach(e => e.style.display = 'none');
+    const posicaoMercurio = new THREE.Vector3();
+    mercurio.getWorldPosition(posicaoMercurio);
+    moveCameraTo(new THREE.Vector3(posicaoMercurio.x,posicaoMercurio.y , posicaoMercurio.z + 2));
+    cameraLookTarget = posicaoMercurio.clone();
+    animacaoplaneta = false;
+    contadorMercurio++;
+    console.log(contadorMercurio);
+    divsobremim.classList.add('displaynone');
+    if (planetaClicado === mercurio && contadorMercurio == 2) {
+      
+      // --- Primeiro movimento: deslocamento em Z ---
+      // 1. Calcular a posição de mundo alvo após o deslocamento em Z
+      const targetWorldPosAfterZ = posicaoMercurio.clone();
+      targetWorldPosAfterZ.z += 0;
+
+      // 2. Converter esta posição de mundo alvo para coordenadas locais em relação a 'orbitaMercurio'
+      orbitaMercurio.worldToLocal(targetWorldPosAfterZ);
+
+      // 3. Definir a posição local de Mercúrio para estas coordenadas locais calculadas
+      mercurio.position.copy(targetWorldPosAfterZ);
+
+      // --- Segundo movimento: animação GSAP para deslocamento em X ---
+      // 1. Calcular a posição de mundo alvo para a animação GSAP (deslocamento de -1 no X do mundo)
+      const targetWorldPosForGSAP = posicaoMercurio.clone(); // Usar a posição inicial do segundo clique
+      targetWorldPosForGSAP.x -= 1; // Mover -1 no X do mundo
+      orbitaMercurio.worldToLocal(targetWorldPosForGSAP); // Converter para local
+      gsap.to(mercurio.position, { x: targetWorldPosForGSAP.x, y: targetWorldPosForGSAP.y, z: targetWorldPosForGSAP.z, duration: 1, ease: "power2.out" });
+    
+    }
+
+
+}}
+
+
+
+
+        
         if (planetaClicado === sun && contadorSun <2) {
           moveCameraTo(new THREE.Vector3(10, 10, 10));
           cameraLookTarget = sun.position.clone();
@@ -439,7 +496,7 @@ if(animacaoMercurio == true){
          
         }
         else if (planetaClicado === Venus) {
-          window.location.href = "https://pt.wikipedia.org/wiki/V%C3%AAnus_(planeta)";
+          planetaClicado1(Venus,orbitaVenus.position,contadorVenus,animacaoVenus)
         }
         else if (planetaClicado === marte) {
           window.location.href = "https://pt.wikipedia.org/wiki/Marte_(planeta)";
