@@ -1,7 +1,7 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.module.js';
     import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.152.0/examples/jsm/controls/OrbitControls.js';
 
-    let contadorSun = 0;
+
     let contadorMercurio = 0;
     
 
@@ -69,6 +69,9 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.m
     });
     const sun = new THREE.Mesh(sunGeometry, sunMaterial);
     scene.add(sun);
+    sun.userData = { nome: "Sol", animacao: true ,clicks:0, descricao:"Sobre mim"};
+
+    
 
 
     // criando mercurio
@@ -81,7 +84,7 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.m
     scene.add(orbitaMercurio);
     mercurio.position.set(12, 0, 0);
     orbitaMercurio.add(mercurio);
-    mercurio.userData = { nome: "Mercurio", animacao: true ,clicks:0};
+    mercurio.userData = { nome: "Mercurio", animacao: true ,clicks:0,descricao:"Hard Skills"};
 
 
 
@@ -95,7 +98,7 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.m
     scene.add(orbitaVenus);
     Venus.position.set(15, 0, 0);
     orbitaVenus.add(Venus);
-    Venus.userData = { nome: "Venus", animacao: true ,clicks:0};
+    Venus.userData = { nome: "Venus", animacao: true ,clicks:0,descricao:"Soft Skills"};
 
 
 
@@ -109,7 +112,7 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.m
     scene.add(OrbitaTerra);
     terra.position.set(18, 0, 0);
     OrbitaTerra.add(terra);
-    terra.userData = { nome: "Terra", animacao: true ,clicks:0};
+    terra.userData = { nome: "Terra", animacao: true ,clicks:0,descricao:"Projetos"};
 
 
 
@@ -125,7 +128,7 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.m
     scene.add(orbitaMarte);
     marte.position.set(23, 0, 0);
     orbitaMarte.add(marte);
-    marte.userData = { nome: "Marte", animacao: true ,clicks:0};
+    marte.userData = { nome: "Marte", animacao: true ,clicks:0,descricao:"Contato"};
 
 
 
@@ -139,7 +142,7 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.m
     scene.add(orbitaJupiter);
     jupiter.position.set(28, 0, 0);
     orbitaJupiter.add(jupiter);
-    jupiter.userData = { nome: "Júpiter", animacao: true ,clicks:0};
+    jupiter.userData = { nome: "Júpiter", animacao: true ,clicks:0,descricao:"SLA"};
 
 
     // Saturno
@@ -152,7 +155,7 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.m
     scene.add(orbitaSaturno);
     saturno.position.set(34, 0, 0);
     orbitaSaturno.add(saturno);
-    saturno.userData = { nome: "Saturno", animacao: true ,clicks:0};
+    saturno.userData = { nome: "Saturno", animacao: true ,clicks:0,descricao:"Certificados"};
 
 
     // Urano
@@ -165,7 +168,7 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.m
     scene.add(orbitaUrano);
     urano.position.set(39, 0, 0);
     orbitaUrano.add(urano);
-    urano.userData = { nome: "Urano", animacao: true ,clicks:0};
+    urano.userData = { nome: "Urano", animacao: true ,clicks:0,descricao:"Hobbies"};
 
     // Netuno
     const NetunoGeometry = new THREE.SphereGeometry(1.1, 32, 32);
@@ -177,7 +180,7 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.m
     scene.add(orbitaNetuno);
     netuno.position.set(43, 0, 0);
     orbitaNetuno.add(netuno);
-    netuno.userData = { nome: "Netuno", animacao: true ,clicks:0};
+    netuno.userData = { nome: "Netuno", animacao: true ,clicks:0,descricao:"Objetivos"};
 
 
 
@@ -345,12 +348,26 @@ if(netuno.userData.animacao == true){
    
     document.getElementById("divvoltar").addEventListener('click', () => {
     
-        moveCameraTo(new THREE.Vector3(10, 35, 15));
-        cameraLookTarget = (scene.position);
-
-       
         divsobremim.classList.add('displaynone');
+        moveCameraTo(new THREE.Vector3(10, 25, 15));
+        cameraLookTarget = (scene.position);
+        planetas.forEach(p => p.userData.animacao = true);
+        planetas.forEach(p => p.userData.clicks = 0);
+        sun.position.set(0, 0, 0);
+        orbitaMercurio.position.set(0, 0, 0);
+        orbitaVenus.position.set(0, 0, 0); 
+        OrbitaTerra.position.set(0, 0, 0);
+        orbitaMarte.position.set(0, 0, 0);
+        orbitaJupiter.position.set(0, 0, 0);
+        orbitaSaturno.position.set(0, 0, 0);
+        orbitaUrano.position.set(0, 0, 0);
+        orbitaNetuno.position.set(0, 0, 0);
+ 
+        
     })
+
+
+   document.getElementById("seguidora");
 
 
   window.addEventListener('mousemove', (event) => {
@@ -364,8 +381,23 @@ if(netuno.userData.animacao == true){
    
 
   if (intersects.length > 0) {
+    if(intersects[0].object.userData.clicks == 0){
+    document.getElementById("seguidora").classList.remove('displaynone');
+    console.log(intersects[0].object.userData.nome);
+    document.getElementById("seguidora").style.top = event.clientY + "px";
+    document.getElementById("seguidora").style.left = event.clientX + "px";
+    /*document.getElementById("seguidora").innerHTML = intersects[0].object.userData.nome;*/
+    document.getElementById("seguidora").innerHTML = intersects[0].object.userData.descricao;
+}
+    
+
+    ;
    
-}});
+}
+else{
+  document.getElementById("seguidora").classList.add('displaynone');
+}
+});
 
 
    
@@ -392,17 +424,33 @@ if(netuno.userData.animacao == true){
         function planetaClicado1(planeta,posicaoabsolutaplaneta){
 
 if (planetaClicado === planeta && planeta.userData.clicks < 2) {
-    
+    planeta.userData.clicks = 0;
     const estrelas = document.querySelectorAll('.estrela');
     estrelas.forEach(e => e.style.display = 'none');
     const posicaoabsolutaplaneta = new THREE.Vector3();
     planeta.getWorldPosition(posicaoabsolutaplaneta);
-    moveCameraTo(new THREE.Vector3(posicaoabsolutaplaneta.x,posicaoabsolutaplaneta.y , posicaoabsolutaplaneta.z + 2));
+    if (planetaClicado == jupiter || planetaClicado == saturno) {
+
+    moveCameraTo(new THREE.Vector3(posicaoabsolutaplaneta.x,posicaoabsolutaplaneta.y , posicaoabsolutaplaneta.z + 5));}
+    else{
+      moveCameraTo(new THREE.Vector3(posicaoabsolutaplaneta.x,posicaoabsolutaplaneta.y , posicaoabsolutaplaneta.z + 2));
+    }
+
+    // Para a animação do planeta clicado e garante que as outras continuem
+    planetas.forEach(p => {
+        p.userData.animacao = (p !== planetaClicado);
+    });
+
     cameraLookTarget = posicaoabsolutaplaneta.clone();
-    planeta.userData.animacao = false;
+    planeta.userData.clicks += 1;
     divsobremim.classList.add('displaynone');
+    divsetavoltar.classList.remove('displaynone');
+    
+    
+    
   
-    if (planetaClicado === mercurio && contadorMercurio == 2) {
+    if (planetaClicado === mercurio && mercurio.userData.clicks == 2)
+     {
       
       // --- Primeiro movimento: deslocamento em Z ---
       // 1. Calcular a posição de mundo alvo após o deslocamento em Z
@@ -427,21 +475,18 @@ if (planetaClicado === planeta && planeta.userData.clicks < 2) {
 
 }}
 
-
-
-
         
-        if (planetaClicado === sun && contadorSun <2) {
+        if (planetaClicado === sun && sun.userData.clicks < 2) {
           moveCameraTo(new THREE.Vector3(10, 10, 10));
           cameraLookTarget = sun.position.clone();
           const estrelas = document.querySelectorAll('.estrela');
           estrelas.forEach(e => e.style.display = 'none');
-          contadorSun++;
-          console.log(contadorSun);
+          sun.userData.clicks += 1;
+
            setavoltar.classList.remove('displaynone');
 
            
-          if (planetaClicado === sun && contadorSun == 2) {
+          if (planetaClicado === sun && sun.userData.clicks == 2) {
             solclicado2();
           }
 

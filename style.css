@@ -92,12 +92,28 @@
 }
  #seguidora {
       position: absolute;
-      width: 40px;
-      height: 40px;
-      background: red;
-      border-radius: 50%;
+      
+      
+      border-radius:10px;
+      border:1px solid white;
       pointer-events: none; /* não atrapalha cliques */
       transition: transform 0.05s linear; /* movimento suave */
+      padding:20px 40px;
+      color:white;
+      
+    }
+
+     #seguidora2 {
+      
+      
+      
+      border-radius:10px;
+      border:1px solid white;
+      pointer-events: none; /* não atrapalha cliques */
+      transition: transform 0.05s linear; /* movimento suave */
+      padding:20px 40px;
+      color:white;
+      
     }
 
 
