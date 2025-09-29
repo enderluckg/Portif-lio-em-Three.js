@@ -378,6 +378,12 @@ if(netuno.userData.animacao == true){
   raycaster.setFromCamera(mouse, camera);
   const intersects = raycaster.intersectObjects(planetas);
 
+  document.getElementById("seguidora").classList.add('displaynone');
+  planetas.forEach(p => {
+    if (p.userData.clicks === 0) { // Só mexe na animação se o planeta não foi clicado
+      p.userData.animacao = true;
+    }
+  });
    
 
   if (intersects.length > 0) {
@@ -388,15 +394,13 @@ if(netuno.userData.animacao == true){
     document.getElementById("seguidora").style.left = event.clientX + "px";
     /*document.getElementById("seguidora").innerHTML = intersects[0].object.userData.nome;*/
     document.getElementById("seguidora").innerHTML = intersects[0].object.userData.descricao;
+    intersects[0].object.userData.animacao = false;
+  
 }
     
-
-    ;
    
 }
-else{
-  document.getElementById("seguidora").classList.add('displaynone');
-}
+
 });
 
 
