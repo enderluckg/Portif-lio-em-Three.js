@@ -22,6 +22,8 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.m
       cameraProgress = 0;
     }
 
+    
+
 
 
 
@@ -48,6 +50,14 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.m
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
+
+
+    // OrbitControls (permite mover com mouse)
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true; // movimento suave
+    controls.dampingFactor = 0.05;
+    controls.enablePan = true;  // mover cena arrastando
+   controls.enableZoom = true; // zoom com scroll
 
     // Luz ambiente e ponto de luz para o sol
     const ambientLight = new THREE.AmbientLight(0x333333);
@@ -314,6 +324,7 @@ if(netuno.userData.animacao == true){
             gsap.to(orbitaUrano.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
             gsap.to(orbitaNetuno.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
             gsap.to(orbitaNetuno.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
+            /*moveCameraTo(new THREE.Vector3(0, 0, 0))*/
             divsobremim.classList.remove('displaynone');
     }
 
