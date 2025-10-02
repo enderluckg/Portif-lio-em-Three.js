@@ -55,7 +55,7 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.m
     // OrbitControls (permite mover com mouse)
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true; // movimento suave
-    controls.dampingFactor = 0.05;
+    controls.dampingFactor = 0.05; 
     controls.enablePan = true;  // mover cena arrastando
    controls.enableZoom = true; // zoom com scroll
 
@@ -457,9 +457,11 @@ if (planetaClicado === planeta && planeta.userData.clicks < 2) {
     });
 
     cameraLookTarget = posicaoabsolutaplaneta.clone();
+    controls.target.set(posicaoabsolutaplaneta.x,posicaoabsolutaplaneta.y,posicaoabsolutaplaneta.z)
     planeta.userData.clicks += 1;
     divsobremim.classList.add('displaynone');
     divsetavoltar.classList.remove('displaynone');
+    object.userData.clicks =0;
     
     
     
