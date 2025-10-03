@@ -326,6 +326,7 @@ if(netuno.userData.animacao == true){
             gsap.to(orbitaNetuno.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
             /*moveCameraTo(new THREE.Vector3(0, 0, 0))*/
             divsobremim.classList.remove('displaynone');
+            controls.target.set(sun.position.x,sun.position.y,sun.position.z)
     }
 
     
