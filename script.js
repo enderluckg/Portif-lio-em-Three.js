@@ -53,11 +53,11 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.m
 
 
     // OrbitControls (permite mover com mouse)
-    const controls = new OrbitControls(camera, renderer.domElement);
+   /* const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true; // movimento suave
     controls.dampingFactor = 0.05; 
     controls.enablePan = true;  // mover cena arrastando
-   controls.enableZoom = true; // zoom com scroll
+   controls.enableZoom = true; // zoom com scroll*/
 
     // Luz ambiente e ponto de luz para o sol
     const ambientLight = new THREE.AmbientLight(0x333333);
@@ -437,10 +437,10 @@ if(netuno.userData.animacao == true){
       if (intersects.length > 0) {
         const planetaClicado = intersects[0].object;
 
-        function planetaClicado1(planeta,posicaoabsolutaplaneta){
+        function planetaClicado1(planeta,posicaoabsolutaplaneta,orbitaplaneta){
 
 if (planetaClicado === planeta && planeta.userData.clicks < 2) {
-    planeta.userData.clicks = 0;
+
     const estrelas = document.querySelectorAll('.estrela');
     estrelas.forEach(e => e.style.display = 'none');
     const posicaoabsolutaplaneta = new THREE.Vector3();
@@ -458,35 +458,37 @@ if (planetaClicado === planeta && planeta.userData.clicks < 2) {
     });
 
     cameraLookTarget = posicaoabsolutaplaneta.clone();
-    controls.target.set(posicaoabsolutaplaneta.x,posicaoabsolutaplaneta.y,posicaoabsolutaplaneta.z)
+    /*controls.target.set(posicaoabsolutaplaneta.x,posicaoabsolutaplaneta.y,posicaoabsolutaplaneta.z)*/
+  
     planeta.userData.clicks += 1;
     divsobremim.classList.add('displaynone');
     divsetavoltar.classList.remove('displaynone');
-    object.userData.clicks =0;
+    console.log(Venus.userData.clicks + " clicks do mercurio")
+    
     
     
     
   
-    if (planetaClicado === mercurio && mercurio.userData.clicks == 2)
+    if (planetaClicado === planeta && planeta.userData.clicks == 2)
      {
       
       // --- Primeiro movimento: deslocamento em Z ---
       // 1. Calcular a posição de mundo alvo após o deslocamento em Z
-      const targetWorldPosAfterZ = posicaoMercurio.clone();
+      const targetWorldPosAfterZ = posicaoabsolutaplaneta.clone();
       targetWorldPosAfterZ.z += 0;
 
       // 2. Converter esta posição de mundo alvo para coordenadas locais em relação a 'orbitaMercurio'
-      orbitaMercurio.worldToLocal(targetWorldPosAfterZ);
+      orbitaplaneta.worldToLocal(targetWorldPosAfterZ);
 
       // 3. Definir a posição local de Mercúrio para estas coordenadas locais calculadas
-      mercurio.position.copy(targetWorldPosAfterZ);
+      planeta.position.copy(targetWorldPosAfterZ);
 
       // --- Segundo movimento: animação GSAP para deslocamento em X ---
       // 1. Calcular a posição de mundo alvo para a animação GSAP (deslocamento de -1 no X do mundo)
-      const targetWorldPosForGSAP = posicaoMercurio.clone(); // Usar a posição inicial do segundo clique
+      const targetWorldPosForGSAP = posicaoabsolutaplaneta.clone(); // Usar a posição inicial do segundo clique
       targetWorldPosForGSAP.x -= 1; // Mover -1 no X do mundo
-      orbitaMercurio.worldToLocal(targetWorldPosForGSAP); // Converter para local
-      gsap.to(mercurio.position, { x: targetWorldPosForGSAP.x, y: targetWorldPosForGSAP.y, z: targetWorldPosForGSAP.z, duration: 1, ease: "power2.out" });
+      orbitaplaneta.worldToLocal(targetWorldPosForGSAP); // Converter para local
+      gsap.to(planeta.position, { x: targetWorldPosForGSAP.x, y: targetWorldPosForGSAP.y, z: targetWorldPosForGSAP.z, duration: 1, ease: "power2.out" });
     
     }
 
@@ -511,55 +513,34 @@ if (planetaClicado === planeta && planeta.userData.clicks < 2) {
         }
          if (planetaClicado === terra) {
 
-          planetaClicado1(terra,OrbitaTerra.position);
+          planetaClicado1(terra,OrbitaTerra.position,OrbitaTerra);
         }
          if (planetaClicado === mercurio ) {
           
-          planetaClicado1(mercurio,orbitaMercurio.position);
+          planetaClicado1(mercurio,orbitaMercurio.position,orbitaMercurio);
           
          
-          if (planetaClicado === mercurio && contadorMercurio == 2) {
-            
-            // --- Primeiro movimento: deslocamento em Z ---
-            // 1. Calcular a posição de mundo alvo após o deslocamento em Z
-            const targetWorldPosAfterZ = posicaoMercurio.clone();
-            targetWorldPosAfterZ.z += 0;
-
-            // 2. Converter esta posição de mundo alvo para coordenadas locais em relação a 'orbitaMercurio'
-            orbitaMercurio.worldToLocal(targetWorldPosAfterZ);
-
-            // 3. Definir a posição local de Mercúrio para estas coordenadas locais calculadas
-            mercurio.position.copy(targetWorldPosAfterZ);
-
-            // --- Segundo movimento: animação GSAP para deslocamento em X ---
-            // 1. Calcular a posição de mundo alvo para a animação GSAP (deslocamento de -1 no X do mundo)
-            const targetWorldPosForGSAP = posicaoMercurio.clone(); // Usar a posição inicial do segundo clique
-            targetWorldPosForGSAP.x -= 1; // Mover -1 no X do mundo
-            orbitaMercurio.worldToLocal(targetWorldPosForGSAP); // Converter para local
-            gsap.to(mercurio.position, { x: targetWorldPosForGSAP.x, y: targetWorldPosForGSAP.y, z: targetWorldPosForGSAP.z, duration: 1, ease: "power2.out" });
           
-          }
-         
           
          
         }
         else if (planetaClicado === Venus) {
-          planetaClicado1(Venus,orbitaVenus.position,)
+          planetaClicado1(Venus,orbitaVenus.position,orbitaVenus)
         }
         else if (planetaClicado === marte) {
-        planetaClicado1(marte,orbitaMarte.position);
+        planetaClicado1(marte,orbitaMarte.position,orbitaMarte);
         }
         else if (planetaClicado === jupiter) {
-          planetaClicado1(jupiter,orbitaJupiter.position);
+          planetaClicado1(jupiter,orbitaJupiter.position,orbitaJupiter);
         }
         else if (planetaClicado === saturno) {
-          planetaClicado1(saturno,orbitaSaturno.position);
+          planetaClicado1(saturno,orbitaSaturno.position,orbitaSaturno);
         }
         else if (planetaClicado === urano) {
-          planetaClicado1(urano,orbitaUrano.position);
+          planetaClicado1(urano,orbitaUrano.position,orbitaUrano);
         }
         else if (planetaClicado === netuno) {
-          planetaClicado1(netuno,orbitaNetuno.position);
+          planetaClicado1(netuno,orbitaNetuno.position,orbitaNetuno);
         }
 
       }
