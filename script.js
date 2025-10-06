@@ -202,14 +202,14 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.m
 
     let cameraLookTarget = scene.position.clone(); // alvo padrão
 
+    // OrbitControls (permite mover com mouse)
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true; // movimento suave
+    controls.dampingFactor = 0.5;
+    controls.enablePan = true;  // mover cena arrastando
+    controls.enableZoom = true; // zoom com scroll
 
-    let animacaoMercurio = true;
-    let animacaoVenus = true;
-    let animacaoMarte = true;
-    let animacaoJupiter = true;
-    let animacaoSaturno = true;
-    let animacaoUrano = true; 
-    let animacaoNetuno = true;
+
     
 
     // Animação
@@ -362,6 +362,8 @@ if(netuno.userData.animacao == true){
         orbitaSaturno.position.set(0, 0, 0);
         orbitaUrano.position.set(0, 0, 0);
         orbitaNetuno.position.set(0, 0, 0);
+        document.getElementById("divvoltar").classList.add('displaynone');
+
  
         
     })
@@ -449,11 +451,13 @@ if (planetaClicado === planeta && planeta.userData.clicks < 2) {
     planeta.userData.clicks += 1;
     divsobremim.classList.add('displaynone');
     divsetavoltar.classList.remove('displaynone');
+    controls.target.set(posicaoabsolutaplaneta.x,posicaoabsolutaplaneta.y , posicaoabsolutaplaneta.z)
+    document.getElementById('divvoltar').classList.remove('displaynone');
     
     
     
   
-    if (planetaClicado === mercurio && mercurio.userData.clicks == 2)
+    if (planetaClicado === planeta && planeta.userData.clicks == 2)
      {
       
       // --- Primeiro movimento: deslocamento em Z ---
@@ -476,7 +480,7 @@ if (planetaClicado === planeta && planeta.userData.clicks < 2) {
     
     }
 
-
+    
 }}
 
         
@@ -487,7 +491,7 @@ if (planetaClicado === planeta && planeta.userData.clicks < 2) {
           estrelas.forEach(e => e.style.display = 'none');
           sun.userData.clicks += 1;
 
-           setavoltar.classList.remove('displaynone');
+           document.getElementById('divvoltar').classList.remove('displaynone');
 
            
           if (planetaClicado === sun && sun.userData.clicks == 2) {
@@ -504,7 +508,7 @@ if (planetaClicado === planeta && planeta.userData.clicks < 2) {
           planetaClicado1(mercurio,orbitaMercurio.position);
           
          
-          if (planetaClicado === mercurio && contadorMercurio == 2) {
+          if (planetaClicado === mercurio && mercurio.userData.clicks == 2) {
             
             // --- Primeiro movimento: deslocamento em Z ---
             // 1. Calcular a posição de mundo alvo após o deslocamento em Z
