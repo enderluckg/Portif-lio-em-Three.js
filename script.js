@@ -94,7 +94,7 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.m
     scene.add(orbitaMercurio);
     mercurio.position.set(12, 0, 0);
     orbitaMercurio.add(mercurio);
-    mercurio.userData = { nome: "Mercurio", animacao: true ,clicks:0,descricao:"Hard Skills"};
+    mercurio.userData = { nome: "Mercurio", animacao: true ,clicks:0,descricao:"hardskils"};
 
 
 
@@ -212,14 +212,6 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.m
 
     let cameraLookTarget = scene.position.clone(); // alvo padrão
 
-    // OrbitControls (permite mover com mouse)
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true; // movimento suave
-    controls.dampingFactor = 0.5;
-    controls.enablePan = true;  // mover cena arrastando
-    controls.enableZoom = true; // zoom com scroll
-
-
     
 
     // Animação
@@ -304,30 +296,7 @@ if(netuno.userData.animacao == true){
 
 
     //função para sol quando clicar pela 2 vez
-     function solclicado2()
-    {
-            gsap.to(sun.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
-            gsap.to(sun.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
-            gsap.to(OrbitaTerra.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
-            gsap.to(OrbitaTerra.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaVenus.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaVenus.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaMercurio.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaMercurio.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaMarte.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaMarte.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaJupiter.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaJupiter.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaSaturno.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaSaturno.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaUrano.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaUrano.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaNetuno.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
-            gsap.to(orbitaNetuno.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
-            /*moveCameraTo(new THREE.Vector3(0, 0, 0))*/
-            divsobremim.classList.remove('displaynone');
-            controls.target.set(sun.position.x,sun.position.y,sun.position.z)
-    }
+     
 
     
 
@@ -439,6 +408,46 @@ if(netuno.userData.animacao == true){
       if (intersects.length > 0) {
         const planetaClicado = intersects[0].object;
 
+
+        function solclicado2()
+    {
+      if(planetaClicado === sun && sun.userData.clicks< 2)
+        {
+          moveCameraTo(new THREE.Vector3(10, 10, 10));
+          cameraLookTarget = sun.position.clone();
+          const estrelas = document.querySelectorAll('.estrela');
+          estrelas.forEach(e => e.style.display = 'none');
+          sun.userData.clicks += 1;
+
+           document.getElementById('divvoltar').classList.remove('displaynone');
+        }
+
+
+
+          if(planetaClicado == sun && sun.userData.clicks == 2){
+            gsap.to(sun.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
+            gsap.to(sun.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
+            gsap.to(OrbitaTerra.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
+            gsap.to(OrbitaTerra.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaVenus.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaVenus.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaMercurio.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaMercurio.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaMarte.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaMarte.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaJupiter.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaJupiter.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaSaturno.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaSaturno.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaUrano.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaUrano.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaNetuno.position, { x: sun.position.x - 7, duration: 1, ease: "power2.out" });
+            gsap.to(orbitaNetuno.position, { z: sun.position.z + 7, duration: 1, ease: "power2.out" });
+            /*moveCameraTo(new THREE.Vector3(0, 0, 0))*/
+            divsobremim.classList.remove('displaynone');
+           /* controls.target.set(sun.position.x,sun.position.y,sun.position.z)*/}
+    }
+
         function planetaClicado1(planeta,posicaoabsolutaplaneta,orbitaplaneta){
 
 if (planetaClicado === planeta && planeta.userData.clicks < 2) {
@@ -465,13 +474,13 @@ if (planetaClicado === planeta && planeta.userData.clicks < 2) {
     planeta.userData.clicks += 1;
     divsobremim.classList.add('displaynone');
     divsetavoltar.classList.remove('displaynone');
-    controls.target.set(posicaoabsolutaplaneta.x,posicaoabsolutaplaneta.y , posicaoabsolutaplaneta.z)
+    /*controls.target.set(posicaoabsolutaplaneta.x,posicaoabsolutaplaneta.y , posicaoabsolutaplaneta.z)*/
     document.getElementById('divvoltar').classList.remove('displaynone');
     
     
     
   
-    if (planetaClicado === planeta && planeta.userData.clicks == 2)
+
     if (planetaClicado === planeta && planeta.userData.clicks == 2)
      {
       
@@ -493,26 +502,25 @@ if (planetaClicado === planeta && planeta.userData.clicks < 2) {
       orbitaplaneta.worldToLocal(targetWorldPosForGSAP); // Converter para local
       gsap.to(planeta.position, { x: targetWorldPosForGSAP.x, y: targetWorldPosForGSAP.y, z: targetWorldPosForGSAP.z, duration: 1, ease: "power2.out" });
     
+       planetas.forEach(p => {
+        if(p == planetaClicado){
+        const temp = document.getElementById(p.userData.descricao) 
+        if(temp)
+        {
+          temp.classList.remove('displaynone')
+        }}
+    });
+    
+    
+       
     }
 
     
 }}
 
         
-        if (planetaClicado === sun && sun.userData.clicks < 2) {
-          moveCameraTo(new THREE.Vector3(10, 10, 10));
-          cameraLookTarget = sun.position.clone();
-          const estrelas = document.querySelectorAll('.estrela');
-          estrelas.forEach(e => e.style.display = 'none');
-          sun.userData.clicks += 1;
-
-           document.getElementById('divvoltar').classList.remove('displaynone');
-
-           
-          if (planetaClicado === sun && sun.userData.clicks == 2) {
-            solclicado2();
-          }
-
+        if (planetaClicado === sun ) {
+            solclicado2(sun);
         }
          if (planetaClicado === terra) {
 
@@ -520,31 +528,7 @@ if (planetaClicado === planeta && planeta.userData.clicks < 2) {
         }
          if (planetaClicado === mercurio ) {
           
-          planetaClicado1(mercurio,orbitaMercurio.position);
-          
-         
-          if (planetaClicado === mercurio && mercurio.userData.clicks == 2) {
-            
-            // --- Primeiro movimento: deslocamento em Z ---
-            // 1. Calcular a posição de mundo alvo após o deslocamento em Z
-            const targetWorldPosAfterZ = posicaoMercurio.clone();
-            targetWorldPosAfterZ.z += 0;
-
-            // 2. Converter esta posição de mundo alvo para coordenadas locais em relação a 'orbitaMercurio'
-            orbitaMercurio.worldToLocal(targetWorldPosAfterZ);
-
-            // 3. Definir a posição local de Mercúrio para estas coordenadas locais calculadas
-            mercurio.position.copy(targetWorldPosAfterZ);
-
-            // --- Segundo movimento: animação GSAP para deslocamento em X ---
-            // 1. Calcular a posição de mundo alvo para a animação GSAP (deslocamento de -1 no X do mundo)
-            const targetWorldPosForGSAP = posicaoMercurio.clone(); // Usar a posição inicial do segundo clique
-            targetWorldPosForGSAP.x -= 1; // Mover -1 no X do mundo
-            orbitaMercurio.worldToLocal(targetWorldPosForGSAP); // Converter para local
-            gsap.to(mercurio.position, { x: targetWorldPosForGSAP.x, y: targetWorldPosForGSAP.y, z: targetWorldPosForGSAP.z, duration: 1, ease: "power2.out" });
-          
-          }
-         
+          planetaClicado1(mercurio,orbitaMercurio.position,orbitaMercurio);
           
          
         }
@@ -570,6 +554,12 @@ if (planetaClicado === planeta && planeta.userData.clicks < 2) {
       }
 
     });
+
+   document.getElementsByClassName('divconst')[1].addEventListener('click', () =>{
+
+    
+    document.getElementsByClassName('exemplo')[1].classList.remove('displaynone');
+   })
 
 
     // Ajustar o tamanho da tela ao redimensionar
