@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Inder&family=Inika:wght@400;700&family=Jacques+Francois+Shadow&family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Questrial&display=swap');
 
+:root
+{
+    --backgroud:black;
+    --btn:blueviolet;
+}
+
 
 section
 {
@@ -11,6 +17,7 @@ section
     color: antiquewhite;
     font-size: 3em;
     margin-top: 2vh;
+    margin-bottom: 2vh;
     font-family: "Jacques Francois Shadow", serif;
     font-weight: 400;
     font-style: normal;
@@ -18,19 +25,17 @@ section
 
 body
 {
-    background-color: black;
+    background-color: var(--backgroud);
     margin: 0;
     position: relative;
 }
-
-#divtxt
+#org1
 {
-    margin-top: 5vh;
-    height: 60vh;
     display: flex;
-    justify-content: center;
-
+    width: 100%;
+    justify-content: space-between;
 }
+
 
 
 #txt1
@@ -45,22 +50,21 @@ body
 #img1
 {
     background-image: url(img/sphere-7488215_1280\ 2.png);
-    width: 20vw;
+    width: 20%;
     height: 50vh;
-    position: absolute;
-    right: 0;
-    top: 15vh;
+    background-repeat: no-repeat;
+    background-size: cover
+
 }
 
 #img2
 {
     background-image: url(img/sphere-7488215_1280\ 2.png);
-    width: 20vw;
+    width: 20%;
     height: 50vh;
-    position: absolute;
-    left: 0;
-    top: 15vh;
     transform: rotateY(180deg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #btn1
@@ -68,7 +72,7 @@ body
     display: flex;
     justify-content: center;
     margin-bottom: 2vh;
-    margin-top: 2vh;
+    margin-top: 5vh;
 }
 
 #btn2
@@ -84,7 +88,7 @@ body
     color: antiquewhite;
     text-decoration: none;
     padding: 10px 40px;
-    background-color: blueviolet;
+    background-color: var(--btn);
     border-radius: 40px;
 }
 
@@ -93,7 +97,7 @@ body
     color: antiquewhite;
     text-decoration: none;
     padding: 10px 40px;
-    background-color: blueviolet;
+    background-color: var(--btn);
     border-radius: 40px;
 }
 
