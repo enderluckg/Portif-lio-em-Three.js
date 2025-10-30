@@ -15,8 +15,9 @@ window.addEventListener('DOMContentLoaded', () => {
     import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.152.0/examples/jsm/controls/OrbitControls.js';
 
 
-    let contadorMercurio = 0;
-    
+
+
+
 
     const divsobremim = document.getElementById('sobremim');
     const divsetavoltar = document.getElementById('setavoltar');
@@ -166,7 +167,7 @@ window.addEventListener('DOMContentLoaded', () => {
     scene.add(orbitaJupiter);
     jupiter.position.set(28, 0, 0);
     orbitaJupiter.add(jupiter);
-    jupiter.userData = { nome: "Júpiter", animacao: true ,clicks:0,descricao:"SLA"};
+    jupiter.userData = { nome: "Júpiter", animacao: true ,clicks:0,descricao:"Formulario-de-Contato"};
 
 
     // Saturno
@@ -379,6 +380,8 @@ if(netuno.userData.animacao == true){
         document.getElementById("divvoltar").classList.add('displaynone');
         document.getElementById("hardskils").classList.add('displaynone')
         document.getElementById("Projetos").classList.add('displaynone')
+        document.getElementById("Contato").classList.add('displaynone')
+        document.getElementById("Formulario-de-Contato").classList.add('displaynone')
 
  
         
@@ -505,6 +508,8 @@ if(netuno.userData.animacao == true){
     divsetavoltar.classList.remove('displaynone');
     document.getElementById("hardskils").classList.add('displaynone')
     document.getElementById("Projetos").classList.add('displaynone')
+    document.getElementById("Contato").classList.add('displaynone')
+    document.getElementById("Formulario-de-Contato").classList.add('displaynone')
     document.getElementById('divvoltar').classList.remove('displaynone');
 
 
