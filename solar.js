@@ -68,11 +68,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
     // OrbitControls (permite mover com mouse)
-   /* const controls = new OrbitControls(camera, renderer.domElement);
+    const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true; // movimento suave
     controls.dampingFactor = 0.05; 
     controls.enablePan = true;  // mover cena arrastando
-   controls.enableZoom = true; // zoom com scroll*/
+   controls.enableZoom = true; // zoom com scroll
 
     // Luz ambiente e ponto de luz para o sol
     const ambientLight = new THREE.AmbientLight(0x333333);
