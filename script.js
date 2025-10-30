@@ -56,7 +56,6 @@ function dark() {
  {
 
     let num = document.getElementById("inptelefone").value
-    console.log(document.getElementById("inptelefone").value)
 
     if(num[0]!="(")
     {
