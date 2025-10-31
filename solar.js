@@ -15,8 +15,9 @@ window.addEventListener('DOMContentLoaded', () => {
     import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.152.0/examples/jsm/controls/OrbitControls.js';
 
 
-    let contadorMercurio = 0;
-    
+
+
+
 
     const divsobremim = document.getElementById('sobremim');
     const divsetavoltar = document.getElementById('setavoltar');
@@ -67,7 +68,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
     // OrbitControls (permite mover com mouse)
-   /* const controls = new OrbitControls(camera, renderer.domElement);
+    /*const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true; // movimento suave
     controls.dampingFactor = 0.05; 
     controls.enablePan = true;  // mover cena arrastando
@@ -122,7 +123,7 @@ window.addEventListener('DOMContentLoaded', () => {
     scene.add(orbitaVenus);
     Venus.position.set(15, 0, 0);
     orbitaVenus.add(Venus);
-    Venus.userData = { nome: "Venus", animacao: true ,clicks:0,descricao:"Soft Skills"};
+    Venus.userData = { nome: "Venus", animacao: true ,clicks:0,descricao:"SoftSkills"};
 
 
 
@@ -166,7 +167,7 @@ window.addEventListener('DOMContentLoaded', () => {
     scene.add(orbitaJupiter);
     jupiter.position.set(28, 0, 0);
     orbitaJupiter.add(jupiter);
-    jupiter.userData = { nome: "Júpiter", animacao: true ,clicks:0,descricao:"SLA"};
+    jupiter.userData = { nome: "Júpiter", animacao: true ,clicks:0,descricao:"Formulario-de-Contato"};
 
 
     // Saturno
@@ -378,7 +379,10 @@ if(netuno.userData.animacao == true){
         orbitaNetuno.position.set(0, 0, 0);
         document.getElementById("divvoltar").classList.add('displaynone');
         document.getElementById("hardskils").classList.add('displaynone')
+        document.getElementById("SoftSkills").classList.add('displaynone')
         document.getElementById("Projetos").classList.add('displaynone')
+        document.getElementById("Contato").classList.add('displaynone')
+        document.getElementById("Formulario-de-Contato").classList.add('displaynone')
 
  
         
@@ -504,7 +508,10 @@ if(netuno.userData.animacao == true){
     divsobremim.classList.add('displaynone');
     divsetavoltar.classList.remove('displaynone');
     document.getElementById("hardskils").classList.add('displaynone')
+    document.getElementById("SoftSkills").classList.add('displaynone')
     document.getElementById("Projetos").classList.add('displaynone')
+    document.getElementById("Contato").classList.add('displaynone')
+    document.getElementById("Formulario-de-Contato").classList.add('displaynone')
     document.getElementById('divvoltar').classList.remove('displaynone');
 
 

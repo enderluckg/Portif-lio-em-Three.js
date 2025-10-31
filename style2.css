@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Inder&family=Inika:wght@400;700&family=Jacques+Francois+Shadow&family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Questrial&display=swap');
+
+*{transition:0.5s}
+
+@import 
+url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Inder&family=Inika:wght@400;700&family=Jacques+Francois+Shadow&family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Questrial&display=swap');
 
 :root
 {

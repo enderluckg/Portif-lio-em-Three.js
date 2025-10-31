@@ -5,7 +5,9 @@
   <meta charset="UTF-8" />
   <title>Sistema Solar em Three.js</title>
   <link rel="stylesheet" href="style.css" />
-
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Inder&family=Inika:wght@400;700&family=Jacques+Francois+Shadow&family=Jersey+25&family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Questrial&display=swap');
+</style>
 </head>
 
 <body>
@@ -40,12 +42,31 @@
       <h2>Habilidades</h2>
     </div>
     <div id="orghardskils" class="displaynone">
-      <div class="divconst"><img src="img/constelacoes/constelacoes-do-zodiaco1.png" alt=""></div>
-      <div class="divconst"><img src="img/constelacoes/constelacoes-do-zodiaco2.png" alt=""></div>
-      <div class="divconst"><img src="img/constelacoes/constelacoes-do-zodiaco3.png" alt=""></div>
-      <div class="divconst"><img src="img/constelacoes/constelacoes-do-zodiaco4.png" alt=""></div>
-      <div class="divconst"><img src="img/constelacoes/constelacoes-do-zodiaco5.png" alt=""></div>
-      <div class="divconst"><img src="img/constelacoes/constelacoes-do-zodiaco6.png" alt=""></div>
+      <div class="divconst">
+        <img src="img/hardskils/c.png" alt="">
+        <p>C#</p>
+      </div>
+      <div class="divconst">
+        <img src="img/hardskils/html5.png" alt="">
+        <p>HTML5</p>
+      </div>
+      <div class="divconst">
+        <img src="img/hardskils/css3.png" alt="">
+        <p>CSS3</p>
+      </div>
+      <div class="divconst">
+        <img src="img/hardskils/js.png" alt="">
+        <p>JAVASCRIPT</p>
+      </div>
+      <div class="divconst">
+        <img src="img/hardskils/python2.png" alt="">
+        <p>PYTHON</p>
+      </div>
+      <div class="divconst">
+        <img src="img/hardskils/Mysql.png" alt="">
+        <p>MYSQL</p>
+      </div>
+
     </div>
   </div>
 
@@ -63,7 +84,82 @@
     </div>
   </div>
 
-  <div></div>
+  <div id="Contato" class="displaynone">
+    <div class="titulo">
+      <h2>Contato</h2>
+    </div>
+    <div id="orgContato1">
+      <div class="divContato"><img src="img/Contato/imgemail2.png" alt="">
+        <p>lucassalmanr@gmail.com</p>
+      </div>
+      <a href="https://github.com/enderluckg">
+        <div class="divContato"><img src="img/Contato/imggithub.png" alt="">
+          <p>https://github.com/enderluckg</p>
+        </div>
+      </a>
+    </div>
+    <div id="orgContato2">
+      <div class="divContato"><img src="img/Contato/imgtele.png" alt="">
+        <p>31996392768</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="Certificados" class="displaynone">
+    <div class="titulo">
+      <h2>Certificados</h2>
+    </div>
+    <div></div>
+  </div>
+
+  <div id="Formulario-de-Contato" class="displaynone">
+    <div class="titulo">
+      <h2>Formulario de Contato</h2>
+    </div>
+
+    <form id="orgform" action="">
+      <div class="divform">Nome</div>
+      <input type="text" name="Nome" required>
+      <div class="divform">Email</div>
+      <input type="email" name="Email" required>
+      <div class="divform">Telefone</div>
+      <input type="text" oninput="mascara_num()" name="Telefone" id="inptelefone" maxlength="15" min="0" max="100"
+        required>
+      <div class="divform">Notas</div>
+      <input type="text" name="Notas" placeholder="Qual o assunto que você deseja tratar" required>
+      <div id="divbtn"><button>Enviar</button></div>
+    </form>
+  </div>
+
+  <div id="SoftSkills" class="displaynone">
+    <div class="titulo"><h2>Soft Skills</h2></div>
+    <div id="orgSoft">
+      <div class="divconst">
+        <img src="img/softskills/Adapitabilidade.png" alt="">
+        <p>Adapitabilidade</p>
+      </div>
+      <div class="divconst">
+        <img src="img/softskills/Comunicacao.png" alt="">
+        <p>Comunicação</p>
+      </div>
+      <div class="divconst">
+        <img src="img/softskills/TrabalhoemEquipe.png" alt="">
+        <p>Trabalho Em Equipe</p>
+      </div>
+      <div class="divconst">
+        <img src="img/softskills/Responsabilidade.png" alt="">
+        <p>Responsabilidade</p>
+      </div>
+      <div class="divconst">
+        <img src="img/softskills/resolverproblemas.png" alt="">
+        <p>Resolução de Problemas</p>
+      </div>
+      <div class="divconst">
+        <img src="img/softskills/EscutaAtiva.png" alt="">
+        <p>Escuta Ativa</p>
+      </div>
+    </div>
+  </div>
 
   <div id="seguidora" class="displaynone">
     <h5 id="seguidora2" class="displaynone"> </h5>

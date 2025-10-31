@@ -51,3 +51,47 @@ function irParaPagina() {
 function dark() {
     document.body.classList.toggle('darkmode')
 }
+
+ function mascara_num()
+ {
+
+    let num = document.getElementById("inptelefone").value
+
+    if(num[0]!="(")
+    {
+       if(num[0] != undefined){
+
+        document.getElementById("inptelefone").value = num.slice(0,0) + "(" + num[0]
+       }
+    }
+
+    if(num[3]!=")")
+        {
+           if(num[3] != undefined){
+    
+            document.getElementById("inptelefone").value = num.slice(0,3) + ")" + num[3]
+      
+           }
+        }
+
+        
+    if(num[5]!=" ")
+      {
+         if(num[5] != undefined){
+  
+          document.getElementById("inptelefone").value = num.slice(0,5) + " " + num[5]
+         }
+      }
+
+       
+
+        if(num[10]!=" ")
+            {
+               if(num[10] != undefined){
+        
+                document.getElementById("inptelefone").value = num.slice(0,10) + " " + num[10]
+               }
+            }
+  console.log(num)
+
+        }
