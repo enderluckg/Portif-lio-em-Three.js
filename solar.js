@@ -67,8 +67,8 @@ window.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(renderer.domElement);
 
 
-    // OrbitControls (permite mover com mouse)
-    /*const controls = new OrbitControls(camera, renderer.domElement);
+    /*// OrbitControls (permite mover com mouse)
+    const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true; // movimento suave
     controls.dampingFactor = 0.05; 
     controls.enablePan = true;  // mover cena arrastando
@@ -209,7 +209,7 @@ window.addEventListener('DOMContentLoaded', () => {
     scene.add(orbitaUrano);
     urano.position.set(39, 0, 0);
     orbitaUrano.add(urano);
-    urano.userData = { nome: "Urano", animacao: true ,clicks:0,descricao:"Hobbies"};
+    urano.userData = { nome: "Urano", animacao: true ,clicks:0,descricao:"Curriculo"};
 
     // Netuno
     const NetunoGeometry = new THREE.SphereGeometry(1.1, 32, 32);
@@ -380,6 +380,7 @@ if(netuno.userData.animacao == true){
         document.getElementById("divvoltar").classList.add('displaynone');
         document.getElementById("hardskils").classList.add('displaynone')
         document.getElementById("SoftSkills").classList.add('displaynone')
+        document.getElementById("Curriculo").classList.add('displaynone')
         document.getElementById("Projetos").classList.add('displaynone')
         document.getElementById("Contato").classList.add('displaynone')
         document.getElementById("Formulario-de-Contato").classList.add('displaynone')
@@ -509,6 +510,7 @@ if(netuno.userData.animacao == true){
     divsetavoltar.classList.remove('displaynone');
     document.getElementById("hardskils").classList.add('displaynone')
     document.getElementById("SoftSkills").classList.add('displaynone')
+    document.getElementById("Curriculo").classList.add('displaynone')
     document.getElementById("Projetos").classList.add('displaynone')
     document.getElementById("Contato").classList.add('displaynone')
     document.getElementById("Formulario-de-Contato").classList.add('displaynone')
