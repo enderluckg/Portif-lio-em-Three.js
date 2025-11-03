@@ -15,6 +15,25 @@
 </head>
 
 <body>
+  <dialog id="modal">
+     <form method="dialog">
+    <section>
+      <p>
+        <label for="favAnimal">Favorite animal:</label>
+        <select id="favAnimal">
+          <option></option>
+          <option>Brine shrimp</option>
+          <option>Red panda</option>
+          <option>Spider monkey</option>
+        </select>
+      </p>
+    </section>
+    <menu>
+      <button id="cancel" type="reset">Cancel</button>
+      <button type="submit">Confirm</button>
+    </menu>
+  </form>
+  </dialog>
     <section>Portfolio em Three.js</section>
    <div id="org1" > 
      <div id="img2"></div>
@@ -39,7 +58,7 @@
     <div id="img1"></div>
     </div>
     <div id="btn1"><a href="Solar.html">Entrar</a></div>
-    <div id="btn2"><a href="Solar.html?tutorial=true">Entrar Com Tutorial</a></div>
+    <div id="btn2" onclick="abrirM()"><label >Tutorial</label></div>
      <div id="divclaro"> <label class="switch">
         <input type="checkbox" onclick="dark()">
         <span class="slider round"></span>

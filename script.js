@@ -31,6 +31,18 @@ function MASCARAS()
 
 }
 
+function dark() 
+{
+    document.body.classList.toggle('darkmode')
+}
+
+function abrirM()
+{
+    document.getElementById("modal").showModal()
+    
+}
+
+
 function irParaPagina() {
 
     if(imgP.classList.contains('GIFU'))
@@ -48,9 +60,7 @@ function irParaPagina() {
 
 }
 
-function dark() {
-    document.body.classList.toggle('darkmode')
-}
+
 
  function mascara_num()
  {
@@ -95,3 +105,5 @@ function dark() {
   console.log(num)
 
         }
+
+

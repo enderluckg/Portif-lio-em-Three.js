@@ -9,6 +9,7 @@ url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..
     --backgroud:black;
     --btn:blueviolet;
     --cortxt:azure;
+    --img:url(img/pngplaneta/esfera.png);
     
 }
 
@@ -47,6 +48,7 @@ body
 #txt1
 {
     width: 50%;
+    height: 80%;
     color: var(--cortxt);
     text-align: center;
     font-size: 1.2em;
@@ -55,7 +57,7 @@ body
 
 #img1
 {
-    background-image: url(img/sphere-7488215_1280\ 2.png);
+    background-image: var(--img);
     width: 20%;
     height: 50vh;
     background-repeat: no-repeat;
@@ -65,7 +67,7 @@ body
 
 #img2
 {
-    background-image: url(img/sphere-7488215_1280\ 2.png);
+    background-image: var(--img);
     width: 20%;
     height: 50vh;
     transform: rotateY(180deg);
@@ -98,7 +100,7 @@ body
     border-radius: 40px;
 }
 
-#btn2 a 
+#btn2 label
 {
     color: var(--cortxt);
     text-decoration: none;
@@ -174,6 +176,7 @@ body
     --backgroud:rgb(255, 255, 255);
     --btn:rgb(43, 226, 195);
     --cortxt:rgb(0, 0, 0);
+    --img:url(img/pngplaneta/pngsaturno.png) ;
     transition: 0.5s;
   }
 
