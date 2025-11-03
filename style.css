@@ -489,3 +489,48 @@ a
       width: 100%;
       height: 80%;
 }
+
+#Curriculo
+{
+   position: absolute;
+   top: 20%;
+   left: 100%;
+   color: white;
+   border-radius: 90px;
+   border: 2px solid white;
+   padding: 25px;   
+   z-index: 1;
+   width: 30vw;
+   height: 70vh;
+   animation: aparecer 1.5s forwards;
+   box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+}
+#orgCurriculo
+{
+   width: 100%;
+   height: 100%;
+   padding: 5px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+#imgCurriculo
+{
+   background-image: url(img/curriculo.jpg);
+   width: 80%;
+   height: 85%;
+   background-position: 30% 0%;
+   border-radius: 5%;
+   background-repeat: no-repeat;
+   margin-bottom: 10px;
+}
+
+#orgCurriculo a
+{
+   padding: 10px 30px;
+   background-color: blueviolet;
+   border-radius: 40px;
+   margin-bottom: 15px;
+   
+}
