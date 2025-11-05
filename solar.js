@@ -221,7 +221,7 @@ window.addEventListener('DOMContentLoaded', () => {
     scene.add(orbitaNetuno);
     netuno.position.set(43, 0, 0);
     orbitaNetuno.add(netuno);
-    netuno.userData = { nome: "Netuno", animacao: true ,clicks:0,descricao:"Objetivos"};
+    netuno.userData = { nome: "Netuno", animacao: true ,clicks:0,descricao:"Formações"};
 
 
 
@@ -382,6 +382,7 @@ if(netuno.userData.animacao == true){
         document.getElementById("SoftSkills").classList.add('displaynone')
         document.getElementById("Curriculo").classList.add('displaynone')
         document.getElementById("Projetos").classList.add('displaynone')
+        document.getElementById("Formações").classList.add('displaynone')
         document.getElementById("Contato").classList.add('displaynone')
         document.getElementById("Formulario-de-Contato").classList.add('displaynone')
 
@@ -512,6 +513,7 @@ if(netuno.userData.animacao == true){
     document.getElementById("SoftSkills").classList.add('displaynone')
     document.getElementById("Curriculo").classList.add('displaynone')
     document.getElementById("Projetos").classList.add('displaynone')
+    document.getElementById("Formações").classList.add('displaynone')
     document.getElementById("Contato").classList.add('displaynone')
     document.getElementById("Formulario-de-Contato").classList.add('displaynone')
     document.getElementById('divvoltar').classList.remove('displaynone');

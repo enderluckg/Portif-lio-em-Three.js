@@ -39,7 +39,6 @@ function dark()
 function abrirM()
 {
     document.getElementById("modal").showModal()
-    
 }
 
 
@@ -105,5 +104,7 @@ function irParaPagina() {
   console.log(num)
 
         }
+
+
 
 
