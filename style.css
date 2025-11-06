@@ -4,7 +4,8 @@
    {
    margin: 0; 
    overflow: hidden;
-   box-sizing: border-box; 
+   box-sizing: border-box;
+   transition: 0.5s; 
    }
    
    body 
@@ -89,9 +90,10 @@
    font-family: Arial, sans-serif;
    padding: 30px;   
    z-index: 1;
-   width: 35%;
+   width: 40%;
    height: 60%;
-   animation: aparecer 1.5s forwards; 
+   animation: aparecer 1.5s forwards;
+   backdrop-filter: blur(20px) brightness(20%);
    
 }
 
@@ -190,6 +192,7 @@
    height: 65vh;
    animation: aparecer 1.5s forwards;
    box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+   backdrop-filter: blur(20px) brightness(20%);
     }
 
     #Projetos
@@ -207,6 +210,7 @@
    height: 65%;
    animation: aparecer 1.5s forwards linear;
    box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+   backdrop-filter: blur(20px) brightness(20%);
     }
 
    #imgprojetos
@@ -316,6 +320,7 @@
    height: 60%;
    animation: aparecer 1.5s forwards linear;
    box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+   backdrop-filter: blur(20px) brightness(20%);
 }
 
 #orgContato1
@@ -376,8 +381,23 @@ a
    height: 60%;
    animation: aparecer 1.5s forwards linear;
    box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+   backdrop-filter: blur(20px) brightness(20%);
 }
 
+
+#pokegrid
+{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr ;
+   grid-template-rows: 1fr 1fr;
+   gap: 10px;
+   margin-top: 3vh;
+}
+
+#pok1:hover
+{
+   scale: 1.2;
+}
 
 
 
@@ -399,6 +419,7 @@ a
    height: 80%;
    animation: aparecer 1.5s forwards linear;
    box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+   backdrop-filter: blur(20px) brightness(20%);
 }
 
 
@@ -479,6 +500,7 @@ a
    height: 65vh;
    animation: aparecer 1.5s forwards;
    box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+   backdrop-filter: blur(20px) brightness(20%);
 }
 
 #orgSoft
@@ -504,6 +526,7 @@ a
    height: 70vh;
    animation: aparecer 1.5s forwards;
    box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+   backdrop-filter: blur(20px) brightness(20%);
 }
 #orgCurriculo
 {
@@ -550,6 +573,7 @@ a
    height: 65%;
    animation: aparecer 1.5s forwards linear;
    box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+   backdrop-filter: blur(20px) brightness(20%);
    
 }
 

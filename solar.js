@@ -380,6 +380,7 @@ if(netuno.userData.animacao == true){
         document.getElementById("divvoltar").classList.add('displaynone');
         document.getElementById("hardskils").classList.add('displaynone')
         document.getElementById("SoftSkills").classList.add('displaynone')
+        document.getElementById("Certificados").classList.add('displaynone')
         document.getElementById("Curriculo").classList.add('displaynone')
         document.getElementById("Projetos").classList.add('displaynone')
         document.getElementById("Formações").classList.add('displaynone')
@@ -511,6 +512,7 @@ if(netuno.userData.animacao == true){
     divsetavoltar.classList.remove('displaynone');
     document.getElementById("hardskils").classList.add('displaynone')
     document.getElementById("SoftSkills").classList.add('displaynone')
+    document.getElementById("Certificados").classList.add('displaynone')
     document.getElementById("Curriculo").classList.add('displaynone')
     document.getElementById("Projetos").classList.add('displaynone')
     document.getElementById("Formações").classList.add('displaynone')
