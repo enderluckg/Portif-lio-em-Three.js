@@ -177,7 +177,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
     // Anel de Saturno
-    const geometry_ring = new THREE.RingGeometry(2, 2.7, 256).rotateX(-Math.PI / 2);
+    const geometry_ring = new THREE.RingGeometry(2, 2.7,512).rotateX(-Math.PI / 2);
     const material_ring = new THREE.MeshStandardMaterial({ map:texturaSaturno })
 
     const ring_upper = new THREE.Mesh(geometry_ring, material_ring);

@@ -29,6 +29,7 @@ section
     font-family: "Jacques Francois Shadow", serif;
     font-weight: 400;
     font-style: normal;
+    text-align: center;
     
 }
 
@@ -247,8 +248,8 @@ body
   {
     width: 20px;
     position: absolute;
-    top: 15vh;
-    right: 20vw;
+    top: 15%;
+    right: 30%;
   }
 
   #TutorialExemplo

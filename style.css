@@ -5,7 +5,7 @@
    margin: 0; 
    overflow: hidden;
    box-sizing: border-box;
-   transition: 0.5s; 
+   transition: 0.8s; 
    }
    
    body 
@@ -79,6 +79,14 @@
          100% {left: 40%;}
    }
 
+   @keyframes legenda
+   {
+      0% {filter: brightness(20%);}
+      20% {filter: brightness(40%);}
+      40% {filter: brightness(60%);}
+      50% {filter: brightness(100%);}
+   }
+
 #sobremim
 {
    position: absolute;
@@ -94,6 +102,7 @@
    height: 60%;
    animation: aparecer 1.5s forwards;
    backdrop-filter: blur(20px) brightness(20%);
+   
    
 }
 
@@ -391,13 +400,32 @@ a
    grid-template-columns: 1fr 1fr 1fr 1fr ;
    grid-template-rows: 1fr 1fr;
    gap: 10px;
+   row-gap: 15px;
    margin-top: 3vh;
+   justify-content: center;
+   align-items: center;
 }
 
-#pok1:hover
+.pokdiv:hover
 {
-   scale: 1.2;
+   scale: 1.1;
+   filter: brightness(130%);
 }
+
+.pokespan
+{
+   display: none;
+   font-size: 0.7em;
+   width: 80%;
+}
+
+.pokdiv:hover .pokespan
+{
+   display: inline-block;
+   animation: legenda 0.9s 
+   
+}
+
 
 
 
@@ -505,11 +533,12 @@ a
 
 #orgSoft
 {
-         display: grid;
+      display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr;
       width: 100%;
       height: 80%;
+      text-align: center;
 }
 
 #Curriculo
@@ -546,7 +575,11 @@ a
    background-position: 30% 0%;
    border-radius: 5%;
    background-repeat: no-repeat;
+   background-size: cover;
    margin-bottom: 10px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 #orgCurriculo a
@@ -555,6 +588,7 @@ a
    background-color: blueviolet;
    border-radius: 40px;
    margin-bottom: 15px;
+
    
 }
 
@@ -625,5 +659,84 @@ a
    background-position: center;
    background-repeat: no-repeat;
    background-size: contain;
+
+}
+
+@media screen and (max-width: 1000px) 
+{
+
+#setavoltar
+{
+   scale: 2;
+   margin-left: 3vw;
+   margin-top: 2vh;
+}
+
+#sobremim
+{
+   width: 89vw;
+   height: 40vh;
+   margin-left: -30vw;
+}
+
+#hardskils
+{
+   width: 89vw;
+   height: 50vh;
+   margin-left: -30vw;
+}
+
+#SoftSkills
+{
+   width: 70vw;
+   height: 50vh;
+   margin-left: -20vw;
+}
+
+#Projetos
+{
+   width: 75vw;
+   height: 50vh;
+   margin-left: -18vw;
+}
+
+#Contato
+{
+   width: 75vw;
+   height: 50vh;
+   margin-left: -18vw;
+}
+
+#Formulario-de-Contato
+{
+   width: 75vw;
+   height: 50vh;
+   margin-left: -18vw;
+   margin-top: 16vh;
+}
+
+#Certificados
+{
+   width: 75vw;
+   height: 35vh;
+   margin-left: -18vw;
+   margin-top: 16vh;
+}
+
+#Curriculo
+{
+   width: 75vw;
+   height: 40vh;
+   margin-left: -18vw;
+   margin-top: 16vh;
+}
+
+#Formações
+{
+   width: 75vw;
+   height: 40vh;
+   margin-left: -18vw;
+   margin-top: 16vh;
+}
 
 }
