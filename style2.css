@@ -271,6 +271,15 @@ body
       margin-top: 2vh;
   }
 
+  @media screen and (max-width:1000px) {
+    
+    .carousel-item
+    {
+      min-width: 80vw ;
+    }
+
+  }
+
 
 
   
