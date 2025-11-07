@@ -41,6 +41,16 @@ function abrirM()
     document.getElementById("modal").showModal()
 }
 
+function fecharM()
+{
+    document.getElementById("modal").close()
+}
+
+window.onclick = function(event) {
+    if (event.target == document.getElementById("modal")) {
+        document.getElementById("modal").close()
+    }
+  }
 
 function irParaPagina() {
 

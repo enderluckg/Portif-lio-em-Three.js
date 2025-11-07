@@ -179,7 +179,7 @@ body
     --backgroud:rgb(255, 255, 255);
     --btn:rgb(43, 226, 195);
     --cortxt:rgb(0, 0, 0);
-    --img:url(img/pngplaneta/pngsaturno.png) ;
+    --img:url(img/pngplaneta/pngsol.png) ;
     transition: 0.5s;
   }
 
